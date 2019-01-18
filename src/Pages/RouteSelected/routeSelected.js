@@ -7,11 +7,8 @@ class RouteSelected extends Component {
   render(){
     return(
       <div>
-        <h1>HERE IS YOUR MOOD-ROUTE</h1>
-        <h3>MAP</h3>
-        <p>Time</p>
-        <p>Places</p>
-        <p>Description</p>
+        <h1>Here is your RouteMood</h1>
+        
       </div>
 
     );

@@ -1,42 +1,51 @@
 import React, {Component} from 'react';
 
-import DatabaseApi from './../../Services/dbApi';
-//import StorageApi from '../services/storageApi';
+import PageScroller from './../../components/HomeScroll/pageScroller';
+import FirstComponent from '../../components/HomeScroll/FirstComponent';
+import SecondComponent from '../../components/HomeScroll/SecondComponent';
+import ThirdComponent from '../../components/HomeScroll/ThirdComponent';
+import '../../components/HomeScroll/style.css';
 
-import MultiGroup from 'multiscroll-reactjs';
 
 class Home extends Component {
-  constructor (props) {
-    super (props);    
+  constructor(props) {
+    super(props);
+    this.state = {currentPage: 1};
+    this._pageScroller = null;
   }
-
-  componentDidMount(){
-    DatabaseApi.getContent();
-  } 
+  
+  goToPage = (eventKey) => {
+    this._pageScroller.goToPage(eventKey);
+  };
+  
+  pageOnChange = (number) => {
+    this.setState({currentPage: number});
+  };
+  
+  getPagesNumbers = () => {  
+    const pageNumbers = [];  
+    for (let i = 1; i <= 3; i++) {
+      pageNumbers.push(
+        <button key={i} eventKey={i - 1} onSelect={this.goToPage}>{i}</button>
+      );
+    }
+  
+    return [...pageNumbers];
+  };
 
 
   render (){
+    const pagesNumbers = this.getPagesNumbers();
+
     return(
       <div>
-        <MultiGroup >
-          <multiScroll>
-            <leftSide>
-              Page1: Content Left here
-            </leftSide>
-            <rightSide>
-              page1: Content Right here
-            </rightSide>
-          </multiScroll>
-          <multiScroll>
-            <leftSide>
-              Page2: Content Left here
-            </leftSide>
-            <rightSide>
-              Page2: Content Right here
-            </rightSide>
-          </multiScroll>
-        </MultiGroup>
-
+        <React.Fragment>
+          <PageScroller ref={c => this._pageScroller = c} pageOnChange={this.pageOnChange} pagesNumbers={pagesNumbers}>            
+            <FirstComponent/>
+            <SecondComponent/>
+            <ThirdComponent />
+          </PageScroller>             
+        </React.Fragment>
       </div>
     );
   }

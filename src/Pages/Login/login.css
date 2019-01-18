@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+
+.form {
+    box-sizing: border-box;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+p {
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+input[type=text],input[type=email],input[type="password"],select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+input[type=submit] {
+    font-family: 'Pacifico', cursive;
+    background-color: #105e62;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #c56868;
+}
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.btn-secondary {
+    font-family: 'Montserrat', sans-serif;
+    background-color: transparent;
+    color: black;
+    padding: 5px 10px;
+    margin:  auto;
+    border: 2px solid #8bd5cb;
+    border-radius: 4px;
+    cursor: pointer;
+
+}

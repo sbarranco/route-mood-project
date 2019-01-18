@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
 export default class StorageApi {
-  static uploadFile(folder, file, callback) {
+  static uploadFile(folder, file, callback){
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${folder}/${+(new Date())}-${file.name}`).put(file);
 

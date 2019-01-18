@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+
+body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background:
+	linear-gradient(
+		#8bd5cb,
+		transparent
+	),
+	linear-gradient(
+		90deg,
+		#edfffa,
+		transparent
+	),
+	linear-gradient(
+		-90deg,
+    #edfffa,
+		transparent
+	);
+}
+html {
+  height: 100%;
+}
 .App {
   text-align: center;
   width: 100%;

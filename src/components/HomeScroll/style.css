@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;    
+}
+
+.component {    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.component.first-component {
+    height:100%;
+    position: relative;
+    background:
+	linear-gradient(
+		limegreen,
+		transparent
+	),
+	linear-gradient(
+		90deg,
+		#8bd5cb,
+		transparent
+	),
+	linear-gradient(
+		-90deg,
+	    #974949,
+		transparent
+	);
+	
+background-blend-mode: screen;
+}
+
+.first-component--inside-scroller {
+    position: absolute;
+    right: 20px;
+    top: 100px;
+}
+
+.component.second-component {
+    background-color: #8bd5cb;
+    background-image: url('./images/walk2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;    
+  
+}
+
+.component.third-component {
+    background:
+	linear-gradient(
+		#8bd5cb,
+		transparent
+	),
+	linear-gradient(
+		90deg,
+		#974949,
+		transparent
+	),
+	linear-gradient(
+		-90deg,
+	    #974949,
+		transparent
+	);    
+}
+
+h1 {   
+    margin-top: 50px;
+    text-align: center;
+    color: #974949;
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+}
+
+.pagination-home {
+    margin: 0;
+    position: fixed;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.pagination-home > li:not(:last-of-type) > a, .pagination-additional-class > li:not(:last-of-type) > span {
+    margin-right: 50px;
+}
+

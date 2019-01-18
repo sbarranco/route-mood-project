@@ -24,14 +24,37 @@ export default class DatabaseApi {
   }
 
 
+  static async getDocumentById(collectionName, id){
+    let resultDoc = null;
+    
+    try {
+      const doc = await db.collection(collectionName).doc(id).get();
+      if (doc.exists) {
+        resultDoc = {
+          id: doc.id,
+          ...doc.data()
+        };
+      }
+    } catch (error) {
+      console.log('​DatabaseApi -> getDocumentById -> error', error);
+    }
+
+    return resultDoc;
+  }
+
+  static async createDocumentWithId(collectionName, document, id){
+    return await DatabaseApi.updateDocument(collectionName, document, id);
+  }
+
   static async updateDocument(collectionName, document, id){
     let success = true;
     
+    //TODO: ojo con guardar el id del documento
+
     try {
       await db.collection(collectionName).doc(id).set(document, { merge: true });
     } catch (error) {
       success = false;
-      // eslint-disable-next-line no-console
       console.log('​DatabaseApi -> updateDocument -> error', error);
     }
 
@@ -44,13 +67,11 @@ export default class DatabaseApi {
     try {
       const docRef = await db.collection(collectionName).add(document);
       if(docRef.id) {
-        // eslint-disable-next-line no-console
         console.log('​DatabaseApi -> addDocument -> docRef.id', docRef.id);
         success = true;
       }
       
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log('​DatabaseApi -> }catch -> error', error);
     }
 
@@ -95,7 +116,6 @@ export default class DatabaseApi {
       });
 
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log('​DatabaseApi -> catch -> error', error);
     }
 

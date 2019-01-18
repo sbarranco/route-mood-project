@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+
+.toolbar {
+    height: 80px;    
+    top: 0;
+    left: 0;
+    background-color:#974949;
+    z-index: 100;     
+}
+
+.navbar {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 1rem;
+}
+.navbar-header {
+  display: flex;
+  justify-content: flex-start;
+}
+.navbar-brand {
+  margin-left: 10px;
+  margin-top: 0px;
+  margin-right: 5px;
+  padding: 10px;       
+}
+
+.navbar-brand a {
+  margin-left: 10px;
+  margin-top: 0px;
+  margin-right: 5px;
+  padding: 10px;       
+}
+.name-logo {
+  text-align: left;
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
+  color: #edfffa;
+  text-decoration: none;
+  margin-top: 0px;
+  margin-left: -15px;
+  padding: 10px;
+}
+ 
+.spacer {
+  flex: 1;
+}
+
+.nav-items {  
+color: white; 
+font-family: 'Montserrat', sans-serif;
+font-size: 20px;
+}
+
+.nav-items a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-items a:hover,
+.nav-items a:active {
+  color: #b5525c;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  
+  }
+
+  li {
+    margin-left: 30px;
+    padding: 0 0.5rem;
+  }
+
+
+.small-menu-classname{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px;
+  font-size: 12px;
+  
+}
+
+@media (max-width: 500px) {
+  .toolbar {
+    height: 100%;
+  }
+  ul {
+    padding: 10px 20px;
+    display: inline;;
+  }
+  li {
+    padding: 10px 0;
+    margin-left: 0;
+    
+  }
+}
+
+ 
