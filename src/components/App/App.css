@@ -1,7 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
 
-body {
+.App {
+  text-align: center;
+  width: 100%;
   height: 100%;
+}
+
+body, html {
+	margin: 0;
+  height: 100%;
+	width: 100%;
+	overflow: hidden;	 
+}
+
+body {
   font-family: 'Montserrat', sans-serif;
   background:
 	linear-gradient(
@@ -19,12 +31,6 @@ body {
 		transparent
 	);
 }
-html {
-  height: 100%;
-}
-.App {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-}
+
+
 

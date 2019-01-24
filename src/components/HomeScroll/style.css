@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
 
-html, body {
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;    
-}
-
 .component {    
     height: 100%;
     width: 100%;
@@ -70,11 +63,11 @@ background-blend-mode: screen;
 }
 
 h1 {   
-    margin-top: 50px;
+    margin-top: 30px;
     text-align: center;
     color: #974949;
     font-family: 'Pacifico', cursive;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 .pagination-home {

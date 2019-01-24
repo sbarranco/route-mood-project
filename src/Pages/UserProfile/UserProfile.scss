@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+
+.card-profile{
+    width: 80%;
+    border-radius: 10px;
+    background-color: #edfffa;
+    margin: 25px auto 0;    
+    box-sizing: content-box; 
+    position: relative;
+}
+
+.container-profile {
+    padding: 2px 16px;
+}
+
+.info-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+
+    .image-profile {
+        align-self: center;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #105e62;
+    }
+    .descr-profile {
+        font-style: italic;
+    }
+
+}
+
+.profile-links {    
+    position: relative;
+    background-color: #974949;
+    text-align: center;
+    padding: 6px 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+    .li-profile {
+      text-align: center;  
+      display: inline-block;
+      padding: 3px 5px 0;
+      
+      img {
+        height: 28px;
+        opacity: 0.8;
+        transition: all .2s ease-out;
+      }
+      
+      a:hover img {
+        opacity: 1;
+        transform: scale(1.1, 1.1);
+      }
+    }
+  }
+  
+  .profile-links:after {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(255, 255, 255, 0);
+      border-bottom-color: #974949;
+      border-width: 10px;
+      margin-left: -10px;
+    }
+
+
+

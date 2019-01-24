@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthApi from '../../Services/authApi';
 import { withRouter } from 'react-router';
-
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class SignIn extends Component {
@@ -58,5 +58,14 @@ class SignIn extends Component {
      );
    }
 }
+const mapStateToProps = (state) => {
+  console.log('probando mapStateProps',state);
+  return {
+    user: state.user,
+    logout: state.logout
+  };
+};
 
-export default withRouter(SignIn);
+
+export default withRouter(connect(mapStateToProps)(SignIn));
+

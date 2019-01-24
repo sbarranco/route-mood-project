@@ -49,8 +49,6 @@ export default class DatabaseApi {
   static async updateDocument(collectionName, document, id){
     let success = true;
     
-    //TODO: ojo con guardar el id del documento
-
     try {
       await db.collection(collectionName).doc(id).set(document, { merge: true });
     } catch (error) {
@@ -90,15 +88,16 @@ export default class DatabaseApi {
       });
   }
 
-  static async getDocument(collectionName, filterName, filterValue){
+  static async getDocuments(collectionName, filterName, filterValue){
     const collectionRef = db.collection(collectionName);
     const query = collectionRef.where(filterName, '==', filterValue);
-    let result = null;
+    let result = [];
 
     const querySnapshot = await query.get();
     querySnapshot.forEach((doc) => {
-      result = doc.data();
-      result.id = doc.id;
+      const newDoc = doc.data();
+      newDoc.id = doc.id;
+      result.push(newDoc);
     });
 
     return result;
@@ -121,4 +120,5 @@ export default class DatabaseApi {
 
     return result;
   }
+
 }

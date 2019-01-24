@@ -3,12 +3,15 @@ import './header.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ResponsiveMenu from 'react-responsive-navbar';
-import { Link } from 'react-router-dom';
 
+import { Link, withRouter } from 'react-router-dom';
+import {setUserInfo} from '../../redux/actions/userActions';
+import { connect } from 'react-redux';
 
 class Header extends Component {
   render() {
-    const { user, logout} = this.props;
+    const { user, logout} = this.props;    
+       
     return (
       <header className='toolbar'>      
         <nav className="navbar">
@@ -21,19 +24,20 @@ class Header extends Component {
           <div className="spacer"></div>
           <div className="nav-items">
             <ResponsiveMenu
-              menuOpenButton={<FontAwesomeIcon icon="bars" size="24px"/>}
-              menuCloseButton={<FontAwesomeIcon icon="times" size="7px"/>}
+              menuOpenButton={<FontAwesomeIcon icon="bars" size="lg"/>}
+              menuCloseButton={<FontAwesomeIcon icon="times" size="lg"/>}
               changeMenuOn="500px"
               largeMenuClassName="large-menu-classname"
               smallMenuClassName="small-menu-classname"
               menu={
-                <ul>
-                  <li>
-                    {!user && <Link to='/login'><FontAwesomeIcon icon="user-circle" size="5px"/>Sign In</Link>}
-                    {user && <div>Welcome Back {user.name}! (<a href="#" onClick={logout}>Logout</a>)</div>}
+                <ul className="ul-nav">
+                  <li className="li-nav">
+                    {!user && <Link to='/login'><FontAwesomeIcon icon="user-circle" size="sm"/>Sign In</Link>}
+                    {user && <Link to={`/private/user/${user.id}`}><FontAwesomeIcon icon="user-circle" size="sm"/>Profile</Link>}
                   </li>
-                  <li><FontAwesomeIcon icon="heart" size="5px"/>About</li>
-                  <li><FontAwesomeIcon icon="envelope" size="5px"/>Contact</li>
+                  <li className="li-nav"><FontAwesomeIcon icon="heart" size="sm"/>About</li>
+                  <li className="li-nav"><FontAwesomeIcon icon="envelope" size="sm"/>Contact</li>
+                  <li className="li-nav">{user && <div>Bienvenido/a {user.name}! <button onClick={logout}>Logout</button></div>}</li>
                 </ul>
               }
             />
@@ -46,5 +50,11 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const dispatchStateToProps = (dispatch) => {
+  return {
+    setUser: (userInfo) => { dispatch(setUserInfo(userInfo)); }
+  };
+};
+
+export default withRouter(connect(null, dispatchStateToProps)(Header));
 

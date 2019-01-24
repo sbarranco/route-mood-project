@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from '../../Pages/Home/home';
 import Header from '../Header/header';
+//import Footer from '../Footer/Footer';
 import Login from '../../Pages/Login/login';
 import SelectRoute from '../../Pages/SelectRoute/selectRoute';
 import RouteSelected from '../../Pages/RouteSelected/routeSelected';
@@ -12,13 +12,16 @@ import UserProfile from '../../Pages/UserProfile/UserProfile';
 import AuthApi from '../../Services/authApi';
 import DatabaseApi from '../../Services/dbApi';
 import SignUp from '../SignUp/SignUp';
-import { setUserInfo } from '../../redux/actions/userActions';
+import SecondComponent from '../HomeScroll/SecondComponent';
+import EditProfile from '../ProfileItems/EditProfile';
+import FavRoutes from '../ProfileItems/FavRoutes';
+//import PrivateRoute from '../PersonalData/PrivateRoute';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes} from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes);
+library.add(faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight);
 
 class App extends Component {
   constructor(props){
@@ -37,11 +40,8 @@ class App extends Component {
       if (user) {
         userData = await DatabaseApi.getDocumentById('user', user.uid);
         if(!userData){ 
-          console.log('!!! something strange happend with user');
-        }
-      } 
-      // eslint-disable-next-line react/prop-types
-      //this.props.setUser(userData);
+          console.log('something strange happend with user');        }
+      }            
       this.setState({user:userData, loading: false});
     });
   }
@@ -66,13 +66,18 @@ class App extends Component {
               <Route path="/home" exact component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
-              <Route path="/select" component={SelectRoute} />        
+              <Route path="/about" component={SecondComponent} />
+              <Route path="/select/:id" component={SelectRoute} />        
               <Route path="/route/:id" component={RouteSelected} />
-              <Route path="/user/:id" component={UserProfile} /> 
+              <Route path="/private/user/:id" component={UserProfile} />
+              <Route path="/private/user/:id/edit" component={EditProfile} />
+              <Route path="/private/user/:id/favourites" component={FavRoutes} />
+              
+              {/* <PrivateRoute path="/private/user/:id" componentUser={UserProfile} />*/ }
               <Route from="/" to="/home" />          
-            </Switch>
+            </Switch>                      
           </div>
-        </Router>
+        </Router>                
       </div>
     );
   }

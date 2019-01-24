@@ -62,7 +62,7 @@ font-size: 20px;
   color: #b5525c;
 }
 
-ul {
+.ul-nav {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -70,7 +70,7 @@ ul {
   
   }
 
-  li {
+  .li-nav {
     margin-left: 30px;
     padding: 0 0.5rem;
   }
@@ -89,11 +89,11 @@ ul {
   .toolbar {
     height: 100%;
   }
-  ul {
+  .ul-nav {
     padding: 10px 20px;
     display: inline;;
   }
-  li {
+  .li-nav {
     padding: 10px 0;
     margin-left: 0;
     
