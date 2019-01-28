@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import DatabaseApi from '../../Services/dbApi';
 import MapApp from '../Maps/Map';
 import './RouteDetail.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
  
 class RouteDetail extends Component {
@@ -14,68 +15,74 @@ class RouteDetail extends Component {
       points: '',
       routeItems: '',
       pointsNames: [],
+      flipped: false,
     };
   }
   
   async componentDidMount() {
     const id  = this.props.match.params.id;        
     const routeItems = await DatabaseApi.getDocumentById('routes', id);      
-    const points = await DatabaseApi.getCollection(`/routes/${id}/points`);    
-    
+    const points = await DatabaseApi.getCollection(`/routes/${id}/points`);  
     this.setState({ points, routeItems});
+  }
+
+  flip = () => {
+    this.setState({ flipped: !this.state.flipped});
   }
   
   render(){
-    const {points, routeItems}  = this.state;  
+    const {points, routeItems, flipped}  = this.state;  
     console.log(Object.values(points));
     
     return(
-      <div className='card-container-det'>
-        <div className='card-body-det'>
-          <CardBack points={points} />
-          <CardFront points={points} routeItems={routeItems} />
+      <div className= 'flipper-container'>
+        <div className={'flipper' + (flipped ? ' flipped' : '')}>
+          <CardBack points={points} flip={this.flip} flipped={flipped}/>
+          <CardFront points={points} routeItems={routeItems} flip={this.flip} flipped={flipped} />
         </div>
-      </div>  
+      </div> 
+
     );
   }
 }
   
 export default withRouter(RouteDetail);
 
-class CardFront extends Component {  
+class CardFront extends Component { 
+
   render() {
-    const { points, routeItems}  = this.props;  
+    const { points, routeItems, flip, flipped}  = this.props;
+      
     return(
-      <div className='card-side side-front'>
-        <div className='container-fluid'>
-          <div className='col-xs-6 side-front-content'>
-            <h1>{routeItems.name}</h1>
-            <p>{routeItems.description}</p>            
-            {/* {points.map(p => <p key={p.name}>{p.name}</p>)};  */} 
-            <p>Lugares recorridos:     
-            </p>                                      
-          </div>
-        </div>
-      </div>
-    
+      <div className= 'front tile'>        
+        <h1 className="title-route">{routeItems.name}</h1>
+        <p>{routeItems.description}</p>            
+        <ul className="ul-points">{points && points.map(p => 
+          <li className="points-list" key={p.name}>                
+            <FontAwesomeIcon icon='map-pin' size="xs" color='#974949'/>
+            <div></div>
+            {p.name}</li>
+        )}
+        </ul>                                    
+        <button className="button-primary" onClick={flip}>
+          <FontAwesomeIcon icon="chevron-circle-right" size="sm"/>
+            Ver Mapa</button>
+      </div>         
     );
   }
 }
 
 class CardBack extends React.Component {  
   render() {
-    const { points }  = this.props;
-    console.log(points);
+    const { points, flip }  = this.props;
+    
     return(
-      <div className='card-side side-back'>
-        <div className='container-fluid'>
-          <MapApp points={points} />          
-        </div>
+      <div className='back tile'>
+        <MapApp points={points} /> 
+        <button className="button-primary" onClick={flip}>
+          <FontAwesomeIcon icon="chevron-circle-right" size="sm"/>
+        Ver Ruta</button>      
       </div>
     );
   }
 }
-
-
-
-

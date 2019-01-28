@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { setUserInfo } from '../../redux/actions/userActions';
 
 
-class UserInfo extends Component {
+class EditProfile extends Component {
   constructor(props){
     super(props);
 
@@ -15,46 +15,39 @@ class UserInfo extends Component {
       newName : '',
       newLastname : '',
       newImage : '',
-      newdDesc : '',         
+      newdDesc : '',
+      userId: '',         
     };
 
     this.fileInputRef = React.createRef();
   }
-  
-    
+      
  
   updateProfile = async (e) => {
     e.preventDefault();
-    const { newName, newLastName, newImage, newDesc, uid } = this.state;
+    const { userInfo } = this.props;
+    const userId = userInfo.uid;  
+
+    const { newName, newLastName, newImage, newDesc} = this.state;
     const result = await DatabaseApi.updateDocument('user', {
       name: newName,
       lastName: newLastName,
       desc: newDesc,
       image: newImage
-    }, uid);
+    }, userId);
 
     if(result){
       alert('document Updated');
       this.setState({newName : '', newLastname: '', newDesc  : '', newImage : ''});
       this.fileInputRef.value = '';
+      this.props.setUser(userInfo);
     }
   }
 
-  createContent = async (e) => {
-    e.preventDefault();
-    const { newDesc } = this.state;
-    const result = await DatabaseApi.addDocument('user', {
-      desc: newDesc
-    });
-
-    if(result){
-      alert('document Added');
-    }
-  }
 
   onFileSelected = (e) => {
     const file = e.target.files[0];
-    StorageApi.uploadFile('images', 'user', file, (imageURL) => {
+    StorageApi.uploadFile('userProfile', file, (imageURL) => {
       this.setState({newImage: imageURL});
     });
   }
@@ -67,20 +60,20 @@ class UserInfo extends Component {
   }
  
   render() {
-    const {newName, newLastname, newDesc, newImage} = this.state;
- 
+    const {newName, newLastname, newDesc, newImage, userId} = this.state;
+    console.log(userId);
+
     return (
       <div className="card-profile">
-        <h2>Modify your info</h2>
-        <input type="file" onChange={(e) => { this.onFileSelected(e); }} ref={(ref) => {this.fileInputRef = ref;}}/>
-        {newImage && <img src={newImage} alt="User pic"/> }
-        <br styles="clear:both" />
-        
-        <form className="user-form" onSubmit={this.updateContent}>
-          <input type="text" value={newName} placeholder="New Name" onChange={(e) => { this.onInputChange('newName', e.target.value); }} /> 
-          <input type="text" value={newLastname} placeholder="New Last Name" onChange={(e) => { this.onInputChange('newLastname', e.target.value); }} /> 
-          <textarea type="text" value={newDesc} placeholder="New Description" onChange={(e) => { this.onInputChange('newDesc', e.target.value); }}/>
-          <button type="button" onClick={this.updateProfile} id="submit" name="submit" className="btn btn-primary pull-right">Modificar</button>
+        <h1>Modifica tu info</h1>       
+        <form className="user-form" onSubmit={this.updateProfile}>
+          <input type="file" className="custom-file-input" onChange={(e) => { this.onFileSelected(e); }} ref={(ref) => {this.fileInputRef = ref;}}/>
+          {newImage && <img className="image-profile" src={newImage} alt="User pic"/>}
+          <br styles="clear:both" />
+          <input type="text" value={newName} placeholder="Nombre" onChange={(e) => { this.onInputChange('newName', e.target.value); }} /> 
+          <input type="text" value={newLastname} placeholder="Apellido" onChange={(e) => { this.onInputChange('newLastname', e.target.value); }} /> 
+          <textarea type="text" value={newDesc} placeholder="Descripción" onChange={(e) => { this.onInputChange('newDesc', e.target.value); }}/>
+          <button type="button" onClick={this.updateProfile} id="submit" name="submit" className="btn-submit">Modificar</button>
         </form>
       </div>
     );
@@ -88,10 +81,11 @@ class UserInfo extends Component {
 }
 
 
-const dispatchStateToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setUser: (userInfo) => { dispatch(setUserInfo(userInfo)); }
+    setUser: (user) => { dispatch(setUserInfo(user)); }
   };
 };
+
   
-export default withRouter(connect(null, dispatchStateToProps)(UserInfo));
+export default withRouter(connect(null, mapDispatchToProps)(EditProfile));

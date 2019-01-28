@@ -5,6 +5,7 @@ import FirstComponent from '../../components/HomeScroll/FirstComponent';
 import SecondComponent from '../../components/HomeScroll/SecondComponent';
 import ThirdComponent from '../../components/HomeScroll/ThirdComponent';
 import '../../components/HomeScroll/style.css';
+import './Home.scss';
 
 
 class Home extends Component {

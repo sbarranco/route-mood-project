@@ -65,7 +65,7 @@ export default class SignUp extends Component {
 
     return (      
       <div>
-        <h1>Sign Up</h1>
+        <h1 className="title-home">Sign Up</h1>
         <form className="form" onSubmit={this.createAccount}>
           <input type="email"    value={registerEmail} onChange={(e)=>{this.setState({registerEmail: e.target.value}); }} placeholder="Email"/>
           <input type="password" value={registerPassword} onChange={(e)=>{this.setState({registerPassword: e.target.value}); }} placeholder="Password"/>

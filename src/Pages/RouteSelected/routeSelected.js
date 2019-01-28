@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import RouteDetail from '../../components/RouteDetail/RouteDetail';
-import MapApp from '../../components/Maps/Map';
-
 
 class RouteSelected extends Component {
 
   render(){
     return(
       <div>
-        <h1>Here is your RouteMood</h1>
+        <h1 className="title-home">Aqui está tu ruta</h1>
         <RouteDetail />        
       </div>
 

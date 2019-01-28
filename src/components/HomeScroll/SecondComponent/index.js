@@ -6,7 +6,7 @@ class SecondComponent extends Component {
   render() {
     return (
       <div className="component second-component container-2">
-        <div className="title-about">About</div>
+        <div id= "about" className="title-about"><h1 className="title-home">About</h1></div>
         <div className="content-box">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna augue, 
           mollis eu turpis imperdiet, blandit pellentesque turpis. Maecenas scelerisque 

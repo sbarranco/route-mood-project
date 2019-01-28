@@ -6,7 +6,7 @@ class ThirdComponent extends Component {
   render() {
     return (
       <div className="component third-component">
-        <h1>Contact us</h1>
+        <div id="contact"><h1 className="title-home">Contact us</h1></div>
         <ContactForm />
       </div>
     );

@@ -45,7 +45,7 @@ class ContactForm extends Component {
             <label>Mensaje</label>
             <textarea id="subject" name="subject" value={message} onChange={(e) => this.setState({message:e.target.value})} placeholder="Escríbenos algo..."></textarea>
             <input type="submit" value="Submit"/>
-            <p>{returnMessage}</p>
+            <p className="return-message">{returnMessage}</p>
           </form>
         </div>
       </div>

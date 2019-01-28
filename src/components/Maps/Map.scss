@@ -1,5 +1,20 @@
-.main-modal {
-  z-index: 2;
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+
+.map {
+    height: 500px;    
+}
+
+.pop-card {
+    text-align: center;
+}
+.pop-img {
+    width: 200px;    
+}
+.pop-main {    
+    font-family: 'Montserrat', sans-serif;
+}
+.pop-link {
+    background-color: transparent;    
 }
 
 .modal {
@@ -18,7 +33,6 @@
       top:50%;
       left:50%;
       transform: translate(-50%,-50%);
-      min-height: 50%;
     }
   }
   
@@ -29,3 +43,4 @@
   .display-none {
     display: none;
   }
+  

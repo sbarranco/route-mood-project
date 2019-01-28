@@ -7,6 +7,7 @@ import ResponsiveMenu from 'react-responsive-navbar';
 import { Link, withRouter } from 'react-router-dom';
 import {setUserInfo} from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
+import { HashLink  } from 'react-router-hash-link';
 
 class Header extends Component {
   render() {
@@ -33,10 +34,10 @@ class Header extends Component {
                 <ul className="ul-nav">
                   <li className="li-nav">
                     {!user && <Link to='/login'><FontAwesomeIcon icon="user-circle" size="sm"/>Sign In</Link>}
-                    {user && <Link to={`/private/user/${user.id}`}><FontAwesomeIcon icon="user-circle" size="sm"/>Profile</Link>}
+                    {user && <Link to={`/private/user/${user.id}/profile`}><FontAwesomeIcon icon="user-circle" size="sm"/>Profile</Link>}
                   </li>
-                  <li className="li-nav"><FontAwesomeIcon icon="heart" size="sm"/>About</li>
-                  <li className="li-nav"><FontAwesomeIcon icon="envelope" size="sm"/>Contact</li>
+                  <li className="li-nav"><HashLink to="/home#about"><FontAwesomeIcon icon="heart" size="sm"/>About</HashLink></li>
+                  <li className="li-nav"><HashLink to="/home#contact"><FontAwesomeIcon icon="envelope" size="sm"/>Contact</HashLink></li>
                   <li className="li-nav">{user && <div>Bienvenido/a {user.name}! <button onClick={logout}>Logout</button></div>}</li>
                 </ul>
               }

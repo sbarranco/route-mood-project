@@ -15,18 +15,18 @@ class SelectRoute extends Component {
 
   async componentDidMount() {   
     const { id } = this.props.match.params;
-    const [route] = await DatabaseApi.getDocuments('routes', 'moodId', id );      
-    this.setState({ route: [route] });
-    console.log(this.state.route);
-    
+    const route = await DatabaseApi.getDocuments('routes', 'moodId', id );      
+    this.setState({ route });    
   }
+
   render(){
-    const { route }  = this.state;   
+    const { route }  = this.state;
+           
     return(
       <div className="route-list">
-        <h1>RouteMood </h1>       
+        <h1 className="title-home">Estas rutas te pueden interesar...</h1>       
         <div className="app-card-list" id="app-card-list">
-          {route.map((m =><RouteItem route={m} key={m} />))} 
+          {route && route.map((m =><RouteItem route={m} key={m} />))} 
         </div>
       </div>
     );

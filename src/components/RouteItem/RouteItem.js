@@ -2,60 +2,98 @@ import React, {Component} from 'react';
 import './RouteItem.scss';
 import CardBody from './CardBody';
 import CardHeader from './CardHeader';
-
-import { connect } from 'react-redux';
 import { setUserInfo } from '../../redux/actions/userActions';
-import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import {Link, withRouter} from 'react-router-dom';
 import DatabaseApi from '../../Services/dbApi';
+import SimpleModal from '../Modal/SimpleModal';
+
 
 class RouteItem extends Component {
   constructor (props){
     super(props);
     this.state = {
-      isFavourite: false
+      isFavourite: false,
+      displayModal: false
     };
   }
-  /* 
-  componentDidMount(){    
-    
+  
+  componentDidMount(){     
     const {route} = this.props;
-    const routeId = route.id;
-    if(this.isFavourite(routeId)){  
-      this.setState({ isFavourite: true });  
-    }
+    this.isFavourite(route.id);
   }
 
   saveFavourite = (id)=>{
-    const favouriteRoute = DatabaseApi.createDocumentWithId(`/user/${userId}/favourites/${id}`);
-    
-    if(this.isFavourite(id) ){
-      favouriteRoute.splice( favouriteRoute.indexOf(id), 1);
-      this.setState({ isFavourite: false});
-    } else{
-      favouriteRoute.push(id);
-      this.setState({ isFavourite: true});
+    const updateFav = async () => {
+      let { user } = this.props;
+
+      if (user.favRoutes.find(routeId => routeId === id)){
+        const index = user.favRoutes.indexOf(id);
+        user.favRoutes.splice(index, 1);
+      } else {
+        user.favRoutes.push(id);
+      }
+
+      if(user.uid){
+        const updateUser = await DatabaseApi.updateDocument('user', user, user.docId);
+        if(updateUser) {
+        // llamo a redux para setear el estado
+          this.props.setUser(user);
+          this.isFavourite(id);
+        } else {
+          console.log('QUE HA PASADO');
+        }
+      }else {
+        this.props.setUser(user);
+        this.isFavourite(id);
+      }   
+     
+    };
+    if (!this.props.user.hasOwnProperty('favRoutes')){
+      this.props.user.favRoutes = []; 
     }
-    DatabaseApi.updateDocument (`/user/${userId}/favourites/${id}`);
+    updateFav();
+  } 
+
+  isFavourite = (id) => {
+    const isInFav = this.props.user.favRoutes.find((routeid) => routeid === id);
+    this.setState({ isFavourite: Boolean(isInFav) });
   }
 
-  isFavourite = (id)=>{
-    const { userId } = this.props.match.params;
-    const routeIndex = DatabaseApi.getCollection(`/user/${userId}/favourites`);
-    return routeIndex >= 0;
+  triggerModal= () => {
+    if (!this.state.displayModal) {
+      this.setState({displayModal: true});
+    }
   }
- */
+ 
   render() {
-    const {route} = this.props;
-    const { isFavourite } = this.state;    
-
+    const {route, user} = this.props;
+    const { isFavourite } = this.state;
+   
     return (
       <article className="card">
+        {this.state.displayModal && <SimpleModal displayModal={this.state.displayModal}>
+          <div className='content-modal'>
+            <div className= 'text-mod'>
+              <h1 className="modal-h1">¡Atención!</h1>
+              <p>Para añadir rutas a <strong>Favoritos</strong> es necesario iniciar sesión o registrarse</p>
+            </div>
+            <div className="btn-content">      
+              <button className="modal-btn"><Link to="/login">Iniciar Sesión</Link></button>
+              <button className="modal-btn"><Link to="/signup">Registrarse</Link></button>
+            </div>  
+          </div>
+        </SimpleModal>
+        }
         <CardHeader 
+          user= {user}
           route={route} 
           isFavourite={isFavourite} 
           saveFavourite={this.saveFavourite} 
           title={route.name} 
-          image={route.image}/>
+          image={route.image}
+          showModal={this.triggerModal}
+        />
         <CardBody 
           route={route} 
           title={route.name} 
@@ -66,10 +104,19 @@ class RouteItem extends Component {
   }
 }
 
-const dispatchStateToProps = (dispatch) => {
+
+
+const mapStateToProps = (state) => {
   return {
-    setUser: (userInfo) => { dispatch(setUserInfo(userInfo)); }
+    user: state.userReducer.user
   };
 };
-  
-export default withRouter(connect(null, dispatchStateToProps)(RouteItem));
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (user) => { dispatch(setUserInfo(user)); }
+  };
+};
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RouteItem));

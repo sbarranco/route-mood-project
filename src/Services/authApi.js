@@ -25,14 +25,16 @@ export default class AuthApi {
   }
 
   static async login(email, password){
-    let error = '';
+    let response = '';
+    let result;
     try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
+      result = await firebase.auth().signInWithEmailAndPassword(email, password);
+
     } catch (err) {
       console.log('AuthApi -> login -> error', err);
-      error = err.code;
+      response = err.code;
     }
-    return error;
+    return {response, userId: result.user.uid};
   }
 
   static registerAuthObserver(callback){

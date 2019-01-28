@@ -95,9 +95,26 @@ export default class DatabaseApi {
 
     const querySnapshot = await query.get();
     querySnapshot.forEach((doc) => {
-      const newDoc = doc.data();
+      let newDoc = doc.data();
       newDoc.id = doc.id;
       result.push(newDoc);
+
+    });
+    console.log(result);
+    return result;
+  }
+
+  
+  static async getUserById(uid){
+    const collectionRef = db.collection('user');
+    const query = collectionRef.where('uid', '==', uid);
+    let result;
+
+    const querySnapshot = await query.get();
+    querySnapshot.forEach((doc) => {
+      let newDoc = doc.data();
+      newDoc.docId = doc.id;
+      result = newDoc;
     });
 
     return result;

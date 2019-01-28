@@ -8,16 +8,23 @@ import { setUserInfo } from '../../redux/actions/userActions';
 import star from './images/star.png';
 import edit from'./images/edit.png';
 import settings from './images/settings.png';
+import EditProfile from '../../components/ProfileItems/EditProfile';
+import FavRoutes from '../../components/ProfileItems/FavRoutes';
+
 
 class UserProfile extends Component {
   constructor(props){
     super(props);
 
     this.state = {
+      userInfo: {},
       name    : '',
       lastName     : '',
-      id       : '',
-      image    : 'https://farm6.staticflickr.com/5617/30845566816_a30784b5aa_o.png',
+      email   : '',
+      desc: '',
+      uid       : '',
+      image    : '',
+      displayPage: 'profile'
     };
 
     this.fileInputRef = React.createRef();
@@ -25,25 +32,31 @@ class UserProfile extends Component {
   
   async componentDidMount(){
     const { id } = this.props.match.params;
-    const userInfo = DatabaseApi.getDocumentById('user', id);    
-    console.log(userInfo);
+    const userInfo = await DatabaseApi.getDocumentById('user', id);   
+    
+    if (!userInfo.image) {
+      this.setState({image : 'https://farm6.staticflickr.com/5617/30845566816_a30784b5aa_o.png'});
+    } else {
+      this.setState ({image: userInfo.image});
+    }     
     this.setState({
+      userInfo: userInfo,
       name: userInfo.name, 
-      lastname: userInfo.lastname, 
+      lastName: userInfo.lastName,
+      email: userInfo.email, 
       desc: userInfo.desc, 
-      id: id, 
-      // image: image, 
+      uid: id,      
       loading: false});
-
   }
 
   render() {
     const { id } = this.props.match.params;
-    
-    const {name, lastName, desc, image, } = this.state;
+    const {userInfo, name, lastName, email, desc, image, } = this.state;
  
     return (
-      <div><h1>My Profile</h1>
+      <div>
+        <h1>My Profile</h1>
+
         <div className="card-profile">
           <ul className="profile-links"> 
             <li className='li-profile favourit'>
@@ -61,15 +74,20 @@ class UserProfile extends Component {
               </Link>
             </li>
           </ul>
-          <div className="container-profile">
+          
+          {this.props.match.params.page === 'profile' && <div className="container-profile">
             <div className="info-header">            
               <img className="image-profile" src={image} alt="user-pic"/>
-              <h2>Silvia Barranco</h2>
-              <p>sbarrancovico@gmail.com</p> 
-              <p className="descr-profile">&ldquo;Me gustan los gatos, caminar sin rumbo definido y escuchar música&rdquo;</p>
+              <h2>{name}{lastName}</h2>
+              <p>{email}</p> 
+              <p className="descr-profile">&ldquo;{desc}&rdquo;</p>
             </div>                  
-          </div>
-        </div>
+          </div>}           
+          
+          {this.props.match.params.page === 'edit' && <EditProfile userInfo={userInfo}/> }
+          {this.props.match.params.page === 'favourites' && <FavRoutes userInfo={userInfo}/> }            
+
+        </div>      
       </div>
     );
   }

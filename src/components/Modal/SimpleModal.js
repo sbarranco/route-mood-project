@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './SimpleModal.scss';
-import LoginCard from './LoginCard/LoginCard';
+
 
 class SimpleModal extends Component {
-  state = { show: false };
+  state = { show: this.props.displayModal };
 
   showModal = () => {
     this.setState({ show: true });
@@ -16,14 +16,10 @@ class SimpleModal extends Component {
 
   render() {
     return (
-      <main>
-        <h1>React Modal</h1>
+      <main className="main-modal">
         <Modal show={this.state.show} handleClose={this.hideModal}>
-          <LoginCard />
+          {this.props.children}
         </Modal>
-        <button type="button" onClick={this.showModal}>
-          Love
-        </button>
       </main>
     );
   }
@@ -39,7 +35,7 @@ const Modal = ({ handleClose, show, children }) => {
         <button
           onClick={handleClose}
         >
-          <FontAwesomeIcon icon="times" size="7px"/>
+          <FontAwesomeIcon icon="times" size="lg" curso="pointer"/>
         </button>
       </section>
     </div>

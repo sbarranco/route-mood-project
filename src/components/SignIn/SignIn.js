@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import AuthApi from '../../Services/authApi';
 import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 
 class SignIn extends Component {
   constructor(props) {
@@ -21,13 +21,14 @@ class SignIn extends Component {
      this.setState({loginError: ''});
 
      const { loginEmail, loginPassword } = this.state;
-     const result = await AuthApi.login(loginEmail, loginPassword);
-     // eslint-disable-next-line no-console
-     console.log('​Signup -> login -> result', result);
+     const {response } = await AuthApi.login(loginEmail, loginPassword);
+ 
 
-     if(result === 'auth/wrong-password') {
+
+     if(response === 'auth/wrong-password') {
        this.setState({loginError: 'Invalid Username or Password'});
      } else {     
+       
        this.props.history.push('/home');
      }
    }
@@ -41,7 +42,7 @@ class SignIn extends Component {
 
      return (
        <div>
-         <h1>Sign In</h1>
+         <h1 className="title-home">Sign In</h1>
          <form className="form" onSubmit={this.login}>
            <input type="email"    value={loginEmail} onChange={(e)=>{this.setState({loginEmail: e.target.value}); }} placeholder="Email"/>
            <input type="password" value={loginPassword} onChange={(e)=>{this.setState({loginPassword: e.target.value}); }} placeholder="Password"/>
@@ -58,14 +59,6 @@ class SignIn extends Component {
      );
    }
 }
-const mapStateToProps = (state) => {
-  console.log('probando mapStateProps',state);
-  return {
-    user: state.user,
-    logout: state.logout
-  };
-};
 
 
-export default withRouter(connect(mapStateToProps)(SignIn));
-
+export default withRouter(SignIn);

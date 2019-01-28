@@ -1,6 +1,6 @@
 export const setUserInfo = (user) => {
   return {
     user,
-    type: 'SET_USER_INFO'
+    type: 'SET_USER'
   };
 };

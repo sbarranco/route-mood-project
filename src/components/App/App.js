@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Home from '../../Pages/Home/home';
 import Header from '../Header/header';
@@ -12,16 +12,15 @@ import UserProfile from '../../Pages/UserProfile/UserProfile';
 import AuthApi from '../../Services/authApi';
 import DatabaseApi from '../../Services/dbApi';
 import SignUp from '../SignUp/SignUp';
-import SecondComponent from '../HomeScroll/SecondComponent';
-import EditProfile from '../ProfileItems/EditProfile';
-import FavRoutes from '../ProfileItems/FavRoutes';
-//import PrivateRoute from '../PersonalData/PrivateRoute';
+//import PrivateRoute from '../ProfileItems/PrivateRoute';
 
+import { connect } from 'react-redux';
+import { setUserInfo} from '../../redux/actions/userActions';
 import { library } from '@fortawesome/fontawesome-svg-core';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight} from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight, faMapPin} 
+  from '@fortawesome/free-solid-svg-icons';
 
-library.add(faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight);
+library.add(faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight, faMapPin);
 
 class App extends Component {
   constructor(props){
@@ -35,19 +34,19 @@ class App extends Component {
   
   componentDidMount(){
     AuthApi.registerAuthObserver(async (user) => {
-      console.log('​App -> componentDidMount -> user', user);
       let userData = null;
       if (user) {
         userData = await DatabaseApi.getDocumentById('user', user.uid);
+        this.props.setUser(userData);
         if(!userData){ 
           console.log('something strange happend with user');        }
-      }            
+      }              
       this.setState({user:userData, loading: false});
     });
   }
 
-  logout = () => {
-    const error = AuthApi.logout();
+  logout = async () => {
+    const error = await AuthApi.logout();
     if(!error){
       console.log('logout user');
     }
@@ -66,15 +65,9 @@ class App extends Component {
               <Route path="/home" exact component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
-              <Route path="/about" component={SecondComponent} />
               <Route path="/select/:id" component={SelectRoute} />        
-              <Route path="/route/:id" component={RouteSelected} />
-              <Route path="/private/user/:id" component={UserProfile} />
-              <Route path="/private/user/:id/edit" component={EditProfile} />
-              <Route path="/private/user/:id/favourites" component={FavRoutes} />
-              
-              {/* <PrivateRoute path="/private/user/:id" componentUser={UserProfile} />*/ }
-              <Route from="/" to="/home" />          
+              <Route path="/route/:id/" component={RouteSelected} />                         
+              <Route path="/private/user/:id/:page" component={UserProfile}/>        
             </Switch>                      
           </div>
         </Router>                
@@ -82,5 +75,11 @@ class App extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (user) => { dispatch(setUserInfo(user)); }
+  };
+};
 
-export default App;
+
+export default (connect(null, mapDispatchToProps)(App));
