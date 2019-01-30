@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
 
 .map {
-    height: 500px;    
+    height: 450px;    
 }
 
 .pop-card {
@@ -44,3 +44,8 @@
     display: none;
   }
   
+  @media (max-width: 500px) {
+    .map {
+        height: 350px;    
+    }  
+  }

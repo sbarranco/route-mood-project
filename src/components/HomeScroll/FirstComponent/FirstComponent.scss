@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+$title-color: #974949;
+$secondary-color: #105e62;
+$back-color: #edfffa;
+$font-title: 'Pacifico', cursive;
+$font-content: 'Montserrat', sans-serif;
+
+
+.content-mood{
+  height: 400px;
+  width: 700px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: white;
+  -webkit-box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
+  -moz-box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
+  box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
+
+  .Curioso{
+    width:200px;
+    height:150px;
+    background-image: url('./images/curioso.jpg');
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    top: 0;
+    position: relative;
+    line-height:150px;
+  }
+
+  .Misterioso{
+    position:absolute;
+    height:200px;
+    width:150px;
+    left:400px;
+    top:0px;
+    background-image: url('./images/misterioso.jpg');
+    background-size: cover;
+    background-position: center;
+    line-height:250px;
+    color:black;
+  }
+
+  .Estresado{
+    position:absolute;
+    height:200px;
+    width:150px;
+    left:550px;
+    top:0px;
+    background-image: url('./images/estresado.jpg');
+    background-size: cover;
+    background-position: center;
+    line-height:250px;
+  }
+
+  .Infantil{
+    position:absolute;
+    height:250px;
+    width:200px;
+    left:0px;
+    top:150px;
+    background-image: url('./images/infantil.jpg');
+    background-size: cover;
+    background-position: center;
+    line-height:250px;
+  }
+
+  .Friki{
+    position:absolute;
+    height:200px;
+    width:300px;
+    left:400px;
+    top:200px;
+    background-image: url('./images/friki.jpg');
+    background-size: cover;
+    background-position: center;
+    line-height:150px;
+  }
+
+  .Retro{
+    position:absolute;
+    height:250px;
+    width:200px;
+    left:200px;
+    top:0px;
+    background-image: url('./images/retro.jpg');
+    background-size: cover;
+    background-position: center;
+    line-height:250px;
+  }
+
+  .Random {
+    position:absolute;
+    height:150px;
+    width:200px;
+    left:200px;
+    top:250px;
+    background-image: url('./images/random.png');
+    background-size: cover;
+    background-position: center;
+    line-height:150px;
+    color:black;
+  }
+  .block{
+    -webkit-animation:scaledown 1s linear;
+    -moz-animation:scaledown 1s linear;
+    animation:scaledown 1s linear;
+    transform-origin:50% 50%;
+    animation-fill-mode: forwards;
+    a {
+      text-decoration: none;
+      color: $secondary-color;
+      font-size: 20px;
+      font-weight: bold;
+      border: 1px solid $back-color;
+      background-color: $back-color;
+    }
+  }
+  
+  .block:hover{
+     z-index:100;
+    -webkit-animation:scale 1s linear;
+    -moz-animation:scale 1s linear;
+    animation:scale 1s linear;
+    transform-origin:50% 50%;
+    animation-fill-mode: forwards;
+  }  
+  
+  @keyframes scale{
+    0%{
+      transform:scale(1.0);
+    }
+    100%{
+      transform:scale(1.1);
+      -webkit-box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
+      -moz-box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
+      box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
+    }
+  }
+  
+  @keyframes scaledown{
+    0%{
+      transform:scale(1.1);
+    }
+     100%{
+      transform:scale(1.0);
+    }
+  }
+}
+
+@media (max-width: 500px){
+  .content-mood {
+  top: 60%;  
+  height: 350px;
+  width: 300px;
+
+  .Curioso{
+    width:150px;
+    height:100px;
+    left: 0;
+    top: 0;
+    line-height:50px;
+  }
+
+  .Misterioso{
+    height:100px;
+    width: 100px;
+    left:200px;
+    top:100px;
+    line-height:100px;
+ }
+
+  .Estresado{
+    height:150px;
+    width: 100px;
+    left:200px;
+    top:200px;
+    line-height:150px;
+  }
+
+  .Infantil{
+    height:150px;
+    width:100px;
+    left:0px;
+    top: 100px;
+    line-height:150px;
+  }
+
+  .Friki{
+    height:100px;
+    width:200px;
+    left:0px;
+    top:250px;
+    line-height:100px;
+  }
+
+  .Retro{
+    height:150px;
+    width:100px;
+    left:100px;
+    top:100px;
+    line-height:150px;
+  }
+
+  .Random {
+    height:100px;
+    width:150px;
+    left:150px;
+    top:0px;
+    line-height:100px;
+  }
+  .block a {
+    font-size: 15px;
+  }
+ }
+}
+
+    

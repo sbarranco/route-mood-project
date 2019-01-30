@@ -6,117 +6,113 @@ $back-color: #edfffa;
 $font-title: 'Pacifico', cursive;
 $font-content: 'Montserrat', sans-serif;
 $mainFont: 'Montserrat', sans-serif;
-$primaryColor: rgb(65, 149, 218) ;
-$secondaryColor:rgb(25, 107, 189);
-$complementaryColor: rgb(212, 240, 252);
-$shadowsColor: rgb(17, 61, 105) ; 
 
+.arrow-left{
+  position: fixed;
+  left: 10px;
+  border: transparent;
+  background-color: transparent;
+  font-family: $font-content;
+  color: $title-color;
+  font-weight: bold;
+  font-size: 15px;
+
+}
 
 .app-card-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;  
+  justify-content: center;  
 }
 
 .card {
-  width:280px;
-  display: flex;
-  flex-direction: column;
-    
-  box-shadow: 10px 5px 40px 20px (#974949);
+  width:580px;
+  display: flex;  
+  margin: 60px;    
+  box-shadow: 10px 5px 40px 20px ($title-color);
   transition: .25s;
   
   &:hover {
-    box-shadow: 10px 5px 40px 20px darken(#974949, 10%);
+    box-shadow: 10px 5px 40px 20px darken ($title-color, 10%);
     cursor: pointer;
     
     .button-primary {
       transform: translate(10px, 0);
     }
   }
-}
-
-.card-header {
-  height: 200px;
-  width: 100%;
-  padding: 15px;
-  background-size:cover;
-  color:#fff;
-  z-index: 1;
-
-.favourite-button{
-  width: 30px;
-  height: 30px;
-  padding: 5px;
-  z-index: 1;
-  position: relative;
-  top: 0;
-  left: 240px;
-  border-radius: 50%;
-  background-image: url('./images/star-regular.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position-y: 5px;
-  background-size:30px;
-  background-color: #105e62;
-  transition: background-image 0.2s ease-out;
-}
-
-.favourite-button:hover , .favourite-button-selected {
-  cursor: pointer;
-  background-image: url('./images/star-hover.png');
-}
-}
-
-.card-body {
-  padding: 15px;
-  background-color:#fff;
-  width:100%;  
-}
-
-.fav-icon {
-  float: left;
-  margin: auto; 
-   
-}
-
-.time {
-  font-size: 11px;
-  font-weight: 600;
-  color: grey;
-}
-
-.body-content {  
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-.title-routeItem {
-  font-family: 'Pacifico', cursive;
-  color: #974949;
-  font-size: 25px;
-  margin: auto;
-
-}
-
-.button-primary {
-  border: none;
-  box-shadow: none;
-  text-decoration: none;
-  font-family: 'Pacifico', cursive;
-  background-color:transparent;
-  color:$secondary-color;
-  font-size: 20px;
-  transition:.25s;
-  cursor: pointer;
-  
-  a{
-    padding-right:4px;
-    text-decoration: none;
-    color:$secondary-color;
+ 
+  .card-header {
+    height: 300px;
+    width: 100%;
+    padding: 15px;
+    background-size:cover;
+    color:#fff;
     
+
+    .favourite-button{
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      position: relative;
+      top: 0;
+      left: 220px;
+      border-radius: 50%;
+      background-image: url('./images/star-regular.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-position-y: 5px;
+      background-size:30px;
+      background-color: $secondary-color;
+      transition: background-image 0.2s ease-out;
+    }
+    
+    .favourite-button:hover , .favourite-button-selected {
+      cursor: pointer;
+      background-image: url('./images/star-hover.png');
+    }
+  }
+
+  .card-body {
+    padding: 15px;
+    background-color:#fff;
+    width:100%; 
+    
+    .time {
+      font-size: 11px;
+      font-weight: 600;
+      color: grey;
+    }
+    .body-content {  
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .title-routeItem {
+      font-family: $font-content;
+      color: $title-color;
+      font-size: 25px;
+      margin: auto;
+    }
+    
+    .button-primary {
+      border: none;
+      box-shadow: none;
+      text-decoration: none;
+      font-family: $font-title;
+      background-color:transparent;
+      color:$secondary-color;
+      font-size: 20px;
+      transition:.25s;
+      cursor: pointer;
+      
+      a{
+        padding-right:4px;
+        text-decoration: none;
+        color:$secondary-color;        
+      }
   }
 }
+}
+
 
 .content-modal {
   margin: auto;
@@ -132,8 +128,8 @@ $shadowsColor: rgb(17, 61, 105) ;
     
     .modal-btn {
       align-self: center;
-      font-family: 'Pacifico', cursive;  
-      background-color: #105e62;
+      font-family: $font-content;  
+      background-color: $secondary-color;
       color: white;
       width: 80%;
       margin-top: 20px;
@@ -149,5 +145,42 @@ $shadowsColor: rgb(17, 61, 105) ;
     }
   }
 }
+
+@media (max-width: 500px) {
+  .arrow-left{
+    position: relative;
+    left: -120px;
+    top: 90px;
+    font-size: 10px; 
+  }
+
+.app-card-list {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+  .card {
+    width: 288px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    margin-left: 10px; 
+    margin-top: 10px;
+
+    .card-header {
+      height: 150px;
+
+      .favourite-button{
+        left: 190px;
+      }
+    }
+    .card-body {
+      .title-routeItem {
+        font-size: 20px;      
+      }
+    }
+  }
+}
+
+
 
 

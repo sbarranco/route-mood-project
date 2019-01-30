@@ -1,13 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+$title-color: #974949;
+$secondary-color: #105e62;
+$four-color: #c56868;
+$back-color: #edfffa;
+$font-title: 'Pacifico', cursive;
+$font-content: 'Montserrat', sans-serif;
 
 .card-profile{
     width: 80%;
     border-radius: 10px;
-    background-color: #edfffa;
+    background-color: $back-color;
     margin: 25px auto 0;    
     box-sizing: content-box; 
     position: relative;
 
+    .fav-routes{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
 .container-profile {
     padding: 2px 16px;
@@ -28,12 +39,12 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: #105e62;
+    background-color: $secondary-color;
 }
 
 .profile-links {    
     position: relative;
-    background-color:#974949;
+    background-color:$title-color;
     text-align: center;
     padding: 6px 0;
     border-top-left-radius: 5px;
@@ -67,14 +78,14 @@
       position: absolute;
       pointer-events: none;
       border-color: rgba(255, 255, 255, 0);
-      border-bottom-color: #974949;
+      border-bottom-color: $title-color;
       border-width: 10px;
       margin-left: -10px;
     }
 
     .btn-submit {
-        font-family: 'Pacifico', cursive;
-        background-color: #105e62;
+        font-family: $font-title;
+        background-color: $secondary-color;
         color: white;
         padding: 12px 20px;
         margin-bottom: 20px;
@@ -83,7 +94,7 @@
         cursor: pointer;
     }
     .btn-submit:hover {
-        background-color: #c56868;
+        background-color:$four-color;
     }
     
     .custom-file-input {
@@ -94,7 +105,7 @@
       }
       .custom-file-input::before {
         content: 'Selecciona nueva imagen';
-        font-family: 'Montserrat', sans-serif;
+        font-family: $font-content;
         color: black;
         display: inline-block;
         background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
@@ -118,6 +129,24 @@
         background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
       }
 
+}
+
+@media (max-width: 500px) {
+  .card-profile{
+    width: 100%;
+    border-radius: 10px;
+    background-color: $back-color;
+    margin: 25px auto 0;    
+    box-sizing: content-box; 
+    position: relative;
+
+    .fav-routes{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 20px;
+    }
+  }
 }
 
 

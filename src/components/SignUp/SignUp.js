@@ -65,18 +65,18 @@ export default class SignUp extends Component {
 
     return (      
       <div>
-        <h1 className="title-home">Sign Up</h1>
+        <h1 className="title-home">Regístrate</h1>
         <form className="form" onSubmit={this.createAccount}>
           <input type="email"    value={registerEmail} onChange={(e)=>{this.setState({registerEmail: e.target.value}); }} placeholder="Email"/>
           <input type="password" value={registerPassword} onChange={(e)=>{this.setState({registerPassword: e.target.value}); }} placeholder="Password"/>
           <input type="text"     value={registerName} onChange={(e)=>{this.setState({registerName: e.target.value}); }} placeholder="Name"/>
           <input type="text"     value={registerLastname} onChange={(e)=>{this.setState({registerLastname: e.target.value}); }} placeholder="Lastname"/>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Enviar" />
         </form>            
-        <p>Already have an account? 
+        <p>¿Ya tienes cuenta? 
           <button className='btn-secondary'>
             <Link to="/login">
-        Sign In
+        Login
             </Link>
           </button></p>
         <p>{registerError}</p>

@@ -46,11 +46,7 @@ class MapApp extends Component {
       });      
     });  */
   }
-  setCoordinates = () => {
-    const { points }  = this.props;     
-    let coordinates = points.map((p => p.coordinates));    
 
-  };
 
   showModal = () => {
     this.setState({ show: true });

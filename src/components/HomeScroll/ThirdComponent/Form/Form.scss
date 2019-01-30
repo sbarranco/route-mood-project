@@ -1,21 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+$title-color: #974949;
+$secondary-color: #105e62;
+$third-color: #b5525c;
+$back-color: #edfffa;
+$font-title: 'Pacifico', cursive;
+$font-content: 'Montserrat', sans-serif;
 
 .form {
     box-sizing: border-box;
     max-width: 420px;
-    margin: 0 auto;
+    margin-top: 50px;
 }
 
 .return-message {
     text-align: center;
     font-weight: 500;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $font-content;
 }
 input[type=text],input[type=email], select, textarea {
-    font-family: 'Montserrat', sans-serif;
+    font-family: $font-content;
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid $back-color;
     border-radius: 4px;
     box-sizing: border-box;
     margin-top: 6px;
@@ -23,19 +29,23 @@ input[type=text],input[type=email], select, textarea {
     resize: vertical;
 }
 input[type=submit] {
-    font-family: 'Pacifico', cursive;
-    background-color: #105e62;
-    color: white;
+    font-family: $font-title;
+    background-color:$secondary-color;
+    color: $back-color;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 input[type=submit]:hover {
-    background-color: #c56868;
+    background-color: $third-color;
 }
 .container {
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: $back-color;
     padding: 20px;
+}
+
+@media (max-width: 500px) {
+    
 }

@@ -41,7 +41,7 @@ class RouteItem extends Component {
           this.props.setUser(user);
           this.isFavourite(id);
         } else {
-          console.log('QUE HA PASADO');
+          console.log('no se puede');
         }
       }else {
         this.props.setUser(user);

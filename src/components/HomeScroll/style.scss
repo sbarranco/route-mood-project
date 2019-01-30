@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+$title-color: #974949;
+$secondary-color: #105e62;
+$third-color: #b5525c;
+$four-color: #8bd5cb;
+$back-color: #edfffa;
+$font-title: 'Pacifico', cursive;
+$font-content: 'Montserrat', sans-serif;
 
 .component {    
     height: 100%;
@@ -17,12 +24,12 @@
 	),
 	linear-gradient(
 		90deg,
-		#8bd5cb,
+		$four-color,
 		transparent
 	),
 	linear-gradient(
 		-90deg,
-	    #974949,
+	    $title-color,
 		transparent
 	);
 	
@@ -36,8 +43,8 @@ background-blend-mode: screen;
 }
 
 .component.second-component {
-    background-color: #8bd5cb;
-    background-image: url('./images/walk2.jpg');
+    background-color: $four-color;
+    background-image: url('./SecondComponent/images/walk2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;    
@@ -47,38 +54,32 @@ background-blend-mode: screen;
 .component.third-component {
     background:
 	linear-gradient(
-		#8bd5cb,
+		$four-color,
 		transparent
 	),
 	linear-gradient(
 		90deg,
-		#974949,
+		$title-color,
 		transparent
 	),
 	linear-gradient(
 		-90deg,
-	    #974949,
+	    $title-color,
 		transparent
 	);    
 }
 
 .title-home {   
     text-align: center;
-    color: #974949;
-    font-family: 'Pacifico', cursive;
-    font-size: 40px;
+    color: $title-color;
+    font-family: $font-title;
+	font-size: 40px;
+	margin-top: 90px;
 }
 
-.pagination-home {
-    margin: 0;
-    position: fixed;
-    top: 20px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.pagination-home > li:not(:last-of-type) > a, .pagination-additional-class > li:not(:last-of-type) > span {
-    margin-right: 50px;
+@media (max-width: 500px) {
+	.title-home{
+		font-size: 30px;
+	}
 }
 

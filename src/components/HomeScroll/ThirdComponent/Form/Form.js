@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import DatabaseApi from '../../../../Services/dbApi';
 
-import './Form.css';
+import './Form.scss';
 
 class ContactForm extends Component {    
   constructor (props) {

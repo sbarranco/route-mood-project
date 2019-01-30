@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+$secondary-color: #105e62;
+$font-content: 'Montserrat', sans-serif;
+
+
+.footer {
+	position: fixed;	
+	width:100%;
+	height:30px;
+	bottom:0;          
+	left:0; 
+	background: $secondary-color;
+	
+
+	p{
+		font-family: $font-content;
+		text-align:center;
+		font-size: 10px;
+		font-weight: bold;
+	}
+	.logo-foot {
+		margin-right: 10px;
+		margin-left: 10px;
+	}	  
+}
+

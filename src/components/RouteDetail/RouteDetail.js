@@ -32,8 +32,7 @@ class RouteDetail extends Component {
   
   render(){
     const {points, routeItems, flipped}  = this.state;  
-    console.log(Object.values(points));
-    
+      
     return(
       <div className= 'flipper-container'>
         <div className={'flipper' + (flipped ? ' flipped' : '')}>
@@ -49,9 +48,8 @@ class RouteDetail extends Component {
 export default withRouter(RouteDetail);
 
 class CardFront extends Component { 
-
   render() {
-    const { points, routeItems, flip, flipped}  = this.props;
+    const { points, routeItems, flip}  = this.props;
       
     return(
       <div className= 'front tile'>        
@@ -59,13 +57,12 @@ class CardFront extends Component {
         <p>{routeItems.description}</p>            
         <ul className="ul-points">{points && points.map(p => 
           <li className="points-list" key={p.name}>                
-            <FontAwesomeIcon icon='map-pin' size="xs" color='#974949'/>
-            <div></div>
+            <FontAwesomeIcon className="map-icon" icon='map-pin' size="xs" color='#974949'/>            
             {p.name}</li>
         )}
         </ul>                                    
-        <button className="button-primary" onClick={flip}>
-          <FontAwesomeIcon icon="chevron-circle-right" size="sm"/>
+        <button className="button-map" onClick={flip}>
+          <FontAwesomeIcon  icon="chevron-circle-right" size="sm"/>
             Ver Mapa</button>
       </div>         
     );
@@ -79,7 +76,7 @@ class CardBack extends React.Component {
     return(
       <div className='back tile'>
         <MapApp points={points} /> 
-        <button className="button-primary" onClick={flip}>
+        <button className="button-map" onClick={flip}>
           <FontAwesomeIcon icon="chevron-circle-right" size="sm"/>
         Ver Ruta</button>      
       </div>

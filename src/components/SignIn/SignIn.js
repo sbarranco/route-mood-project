@@ -42,16 +42,16 @@ class SignIn extends Component {
 
      return (
        <div>
-         <h1 className="title-home">Sign In</h1>
+         <h1 className="title-home">Inicia Sesión</h1>
          <form className="form" onSubmit={this.login}>
            <input type="email"    value={loginEmail} onChange={(e)=>{this.setState({loginEmail: e.target.value}); }} placeholder="Email"/>
            <input type="password" value={loginPassword} onChange={(e)=>{this.setState({loginPassword: e.target.value}); }} placeholder="Password"/>
-           <input type="submit" value="Sign In" />
+           <input type="submit" value="Enviar" />
          </form>            
-         <p>Do not have an account yet? 
+         <p>¿No tienes cuenta? 
            <button className='btn-secondary'>
              <Link to="/signup">
-        Create account
+             Regístrate
              </Link>
            </button></p>
          <p>{loginError}</p>

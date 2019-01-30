@@ -28,10 +28,10 @@ class EditProfile extends Component {
     const { userInfo } = this.props;
     const userId = userInfo.uid;  
 
-    const { newName, newLastName, newImage, newDesc} = this.state;
+    const { newName, newLastname, newImage, newDesc} = this.state;
     const result = await DatabaseApi.updateDocument('user', {
       name: newName,
-      lastName: newLastName,
+      lastName: newLastname,
       desc: newDesc,
       image: newImage
     }, userId);

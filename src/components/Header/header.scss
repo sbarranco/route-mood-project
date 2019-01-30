@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pacifico');
+$title-color: #974949;
+$secondary-color: #105e62;
+$third-color: #b5525c;
+$back-color: #edfffa;
+$font-title: 'Pacifico', cursive;
+$font-content: 'Montserrat', sans-serif;
+
+.toolbar {
+    width: 100%;
+    height: 80px;    
+    top: 0;
+    left: 0;
+    background-color: $title-color;
+    z-index: 1;     
+    position: fixed;   
+
+  .navbar-header {
+    display: flex;
+    justify-content: flex-start;
+
+    .navbar-brand {
+      margin-left: 10px;
+      margin-top: 0px;
+      margin-right: 5px;
+      padding: 10px;
+      
+      .navbar-brand a {
+        text-decoration: none;
+        margin-left: 10px;
+        margin-top: 0px;
+        margin-right: 5px;
+        padding: 10px;       
+      }
+    }
+    .name-logo {
+      text-align: left;
+      font-family: $font-title;
+      font-size: 30px;
+      color:$back-color;
+      text-decoration: none;
+      margin-top: 15px;
+      margin-left: -15px;
+      padding: 10px;  
+  }
+}
+ 
+  .ul-nav {
+    list-style: none;
+    margin: 10px;
+    padding: 0;
+    //display: flex;
+    
+    }
+
+    .li-nav {
+      color: $back-color; 
+      font-family: $font-content;
+      margin-left: 30px;
+      padding: 0 0.5rem;
+      a {
+        text-decoration: none;
+        color: $back-color;
+      }
+      .logout-btn{
+        color: black;
+        background-color: $back-color;
+        border: 1px solid white; 
+      }
+      .font-icon {
+        margin-right: 10px;
+      }
+    }
+  
+
+  .bm-item {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+    transition: color 0.2s;
+  }
+
+  .bm-item:hover {
+    color: white;
+  }
+
+  .bm-burger-button {
+    position: fixed;
+    color: white;
+    width: 36px;
+    height: 30px;
+    right: 36px;
+    top: 36px;
+  }
+
+  .bm-burger-bars {
+    background: $back-color;
+  }
+
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+    margin-right: 20px;
+  }
+
+  .bm-cross {
+    background: $back-color;
+  }
+
+  .bm-menu {
+    background: $title-color;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+
+  .bm-morph-shape {
+    fill:$title-color;
+  }
+
+  .bm-item-list {
+    color: #b8b7ad;
+    overflow-y: hidden;
+  }
+
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 500px) {
+  .toolbar {
+    width: 100%;
+    
+  
+  .ul-nav {
+    padding: 10px 20px;
+    display: inline;
+  }
+  .li-nav {
+    padding: 10px 0;
+    margin-left: 0;    
+  }
+  .navbar-header {
+ 
+    .name-logo {
+      font-size: 25px;
+  }
+  }
+  .bm-burger-button {
+    width: 26px;
+    height: 20px;
+  }
+}
+
+}

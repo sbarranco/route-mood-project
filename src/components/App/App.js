@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Home from '../../Pages/Home/home';
 import Header from '../Header/header';
-//import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer';
 import Login from '../../Pages/Login/login';
 import SelectRoute from '../../Pages/SelectRoute/selectRoute';
 import RouteSelected from '../../Pages/RouteSelected/routeSelected';
@@ -17,10 +17,10 @@ import SignUp from '../SignUp/SignUp';
 import { connect } from 'react-redux';
 import { setUserInfo} from '../../redux/actions/userActions';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight, faMapPin} 
+import { faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight, faMapPin, faHome, faArrowLeft} 
   from '@fortawesome/free-solid-svg-icons';
 
-library.add(faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight, faMapPin);
+library.add(faUserCircle, faMapMarkerAlt, faHeart, faEnvelope, faBars, faTimes, faChevronCircleRight, faMapPin, faHome, faArrowLeft);
 
 class App extends Component {
   constructor(props){
@@ -60,7 +60,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            <Header user={user} logout={this.logout} loading={loading} />
+            <Header user={user} logout={this.logout} loading={loading} />            
             <Switch>
               <Route path="/home" exact component={Home} />
               <Route path="/login" component={Login} />
@@ -68,7 +68,8 @@ class App extends Component {
               <Route path="/select/:id" component={SelectRoute} />        
               <Route path="/route/:id/" component={RouteSelected} />                         
               <Route path="/private/user/:id/:page" component={UserProfile}/>        
-            </Switch>                      
+            </Switch>
+            <Footer />                      
           </div>
         </Router>                
       </div>
