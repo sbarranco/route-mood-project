@@ -6,7 +6,6 @@ import { applyMiddleware,createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
 
-
 import * as serviceWorker from './serviceWorker';
 import DatabaseApi from './Services/dbApi';
 

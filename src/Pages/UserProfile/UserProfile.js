@@ -87,8 +87,8 @@ class UserProfile extends Component {
           {this.props.match.params.page === 'profile' && <div className="container-profile">
             <div className="info-header">            
               <img className="image-profile" src={image} alt="user-pic"/>
-              <h2>{name} {lastName}</h2>
-              <p>{email}</p> 
+              <h2 className="name-profile">{name} {lastName}</h2>
+              <p className="descr-profile">{email}</p> 
               <p className="descr-profile">&ldquo;{desc}&rdquo;</p>
             </div>                  
           </div>}           

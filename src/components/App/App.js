@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import './App.scss';
 
 import Home from '../../Pages/Home/home';
 import Header from '../Header/header';
@@ -13,7 +12,9 @@ import AuthApi from '../../Services/authApi';
 import DatabaseApi from '../../Services/dbApi';
 import SignUp from '../SignUp/SignUp';
 //import PrivateRoute from '../ProfileItems/PrivateRoute';
+import Loading from '../Loading/Loading';
 
+import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setUserInfo} from '../../redux/actions/userActions';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -48,26 +49,27 @@ class App extends Component {
   logout = async () => {
     const error = await AuthApi.logout();
     if(!error){
-      console.log('logout user');
-    }
+      return <Redirect to='/home' />;
+    } 
   }
 
   render() {
     const { user, loading } = this.state;
-    if(loading) return <div>Loading</div>;
+    if(loading) return <Loading />;
 
     return (
       <div className="App">
         <Router>
           <div>
-            <Header user={user} logout={this.logout} loading={loading} />            
+            <Header user={user} logout={this.logout}/>            
             <Switch>
-              <Route path="/home" exact component={Home} />
+              <Route exact path="/home" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
               <Route path="/select/:id" component={SelectRoute} />        
               <Route path="/route/:id/" component={RouteSelected} />                         
-              <Route path="/private/user/:id/:page" component={UserProfile}/>        
+              <Route path="/private/user/:id/:page" component={UserProfile} componentUser={UserProfile} user={user}/> 
+              <Redirect from="/" to="/home" />       
             </Switch>
             <Footer />                      
           </div>

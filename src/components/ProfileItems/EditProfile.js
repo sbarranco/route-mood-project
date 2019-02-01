@@ -60,12 +60,10 @@ class EditProfile extends Component {
   }
  
   render() {
-    const {newName, newLastname, newDesc, newImage, userId} = this.state;
-    console.log(userId);
-
+    const {newName, newLastname, newDesc, newImage} = this.state;
     return (
       <div className="card-profile">
-        <h1>Modifica tu info</h1>       
+        <h2>Modifica tu info</h2>       
         <form className="user-form" onSubmit={this.updateProfile}>
           <input type="file" className="custom-file-input" onChange={(e) => { this.onFileSelected(e); }} ref={(ref) => {this.fileInputRef = ref;}}/>
           {newImage && <img className="image-profile" src={newImage} alt="User pic"/>}

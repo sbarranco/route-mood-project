@@ -4,7 +4,7 @@ import './header.scss';
 import { Link, withRouter } from 'react-router-dom';
 import {setUserInfo} from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar/Sidebar';
 
 
 class Header extends Component {
@@ -32,4 +32,3 @@ const dispatchStateToProps = (dispatch) => {
 };
 
 export default withRouter(connect(null, dispatchStateToProps)(Header));
-

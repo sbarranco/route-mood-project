@@ -9,12 +9,12 @@ class Sidebar extends Component {
     const { user, logout} = this.props; 
 
     return (
-      <Menu right  pageWrapId={'page-wrap'} >
+      <Menu right  pageWrapId={'page-wrap'} isOpen={ false }>
         <div id="page-wrap">
           <ul className="ul-nav">
-            <li className="li-nav"><Link to="/home"><FontAwesomeIcon className="font-icon" icon="home" size="sm" />Inicio</Link></li>
+            <li className="li-nav"><Link to="/home#home"><FontAwesomeIcon className="font-icon" icon="home" size="sm" />Inicio</Link></li>
             <li className="li-nav">
-              {!user && <Link to='/login'><FontAwesomeIcon icon="user-circle" size="sm"/>Sign In</Link>}
+              {!user && <Link to='/login'><FontAwesomeIcon className="font-icon" icon="user-circle" size="sm"/>Sign In</Link>}
               {user && <Link to={`/private/user/${user.id}/profile`}><FontAwesomeIcon className="font-icon" icon="user-circle" size="sm"/>Perfil</Link>}
             </li>
             <li className="li-nav"><HashLink to="/home#about"><FontAwesomeIcon className="font-icon" icon="heart" size="sm"/>Sobre</HashLink></li>

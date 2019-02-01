@@ -3,7 +3,6 @@ import AuthApi from '../../Services/authApi';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-
 class SignIn extends Component {
   constructor(props) {
     super (props);
@@ -22,8 +21,6 @@ class SignIn extends Component {
 
      const { loginEmail, loginPassword } = this.state;
      const {response } = await AuthApi.login(loginEmail, loginPassword);
- 
-
 
      if(response === 'auth/wrong-password') {
        this.setState({loginError: 'Invalid Username or Password'});
@@ -34,6 +31,7 @@ class SignIn extends Component {
    }
 
    render() {
+
      const {
        loginEmail,
        loginPassword,
@@ -46,7 +44,8 @@ class SignIn extends Component {
          <form className="form" onSubmit={this.login}>
            <input type="email"    value={loginEmail} onChange={(e)=>{this.setState({loginEmail: e.target.value}); }} placeholder="Email"/>
            <input type="password" value={loginPassword} onChange={(e)=>{this.setState({loginPassword: e.target.value}); }} placeholder="Password"/>
-           <input type="submit" value="Enviar" />
+           <input type="submit" value="Enviar" />           
+
          </form>            
          <p>¿No tienes cuenta? 
            <button className='btn-secondary'>

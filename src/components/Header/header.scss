@@ -57,7 +57,9 @@ $font-content: 'Montserrat', sans-serif;
       color: $back-color; 
       font-family: $font-content;
       margin-left: 30px;
+      margin-bottom: 15px;
       padding: 0 0.5rem;
+
       a {
         text-decoration: none;
         color: $back-color;
@@ -79,6 +81,7 @@ $font-content: 'Montserrat', sans-serif;
     margin-bottom: 10px;
     color: #d1d1d1;
     transition: color 0.2s;
+    outline: none;
   }
 
   .bm-item:hover {
@@ -130,27 +133,30 @@ $font-content: 'Montserrat', sans-serif;
 
 @media (max-width: 500px) {
   .toolbar {
-    width: 100%;
-    
+    width: 100%;   
   
-  .ul-nav {
-    padding: 10px 20px;
-    display: inline;
-  }
-  .li-nav {
-    padding: 10px 0;
-    margin-left: 0;    
-  }
-  .navbar-header {
- 
-    .name-logo {
-      font-size: 25px;
-  }
+    .ul-nav {
+        padding: 10px 20px;
+        display: inline;
+        .li-nav {
+            padding: 10px 0;
+            margin-left: 10px;    
+        }
+    }
+
+  .navbar-header { 
+        .name-logo {
+        font-size: 25px;
+    }
+    .navbar-brand {
+        width: 40px;
+        margin-top: 10px;
+    }
+
   }
   .bm-burger-button {
     width: 26px;
     height: 20px;
-  }
 }
-
+}
 }

@@ -26,15 +26,15 @@ class FirstComponent extends Component {
     return (
       <div className="component first-component">
         <div className='container-1'>
-          <h1 className="title-home">¿Cómo te sientes hoy?</h1>   
+          <div id= "home"><h1 className="title-home">¿Cómo te sientes hoy?</h1></div>   
           <div className="content-mood">
             { moods && moods.map(m => 
               <div className={`block ${m.name}`} key={m.id} moodname={m.name}>
                 <Link to={`/select/${m.id}`}>{m.name}</Link>
               </div>)}
           </div> 
-        </div>       
-      </div>      
+        </div>
+      </div> 
     );
   }
 }

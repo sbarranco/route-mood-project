@@ -9,7 +9,7 @@ $font-content: 'Montserrat', sans-serif;
 .flipper-container {
   background-color: $back-color;
   width:80%;
-  //height:max-content;
+  height:max-content;
   
   
   .button-map {
@@ -67,6 +67,10 @@ $font-content: 'Montserrat', sans-serif;
         font-weight: 700;        
         }
 
+      .desc-route{
+        margin: 30px;
+      }
+
         .ul-points {
           list-style-type: none;
           margin: 0;
@@ -82,11 +86,7 @@ $font-content: 'Montserrat', sans-serif;
           }         
       }
     }
-          
-    .back {  
-            
-      
-    }
+
   }
 }
 
@@ -118,6 +118,9 @@ $font-content: 'Montserrat', sans-serif;
         .title-route {
           font-size: 20px;
           font-weight: bold;        
+          }
+          .desc-route{
+            margin: 10px;
           }
      
         }

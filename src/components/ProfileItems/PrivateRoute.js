@@ -5,13 +5,13 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 
 class PrivateRoute extends Component {
   render() {
-    const { user, componentUser } = this.props;
-    const ComponentUser = componentUser;
+    const { user, component } = this.props;
+    const ComponentUser = component;
     
     return (
       <Route render={(props) => (
         user ? 
-          (<ComponentUser {...this.props} />): 
+          (<ComponentUser user={this.props.user} />): 
           <Redirect to='/signup' />
       )} />
     );

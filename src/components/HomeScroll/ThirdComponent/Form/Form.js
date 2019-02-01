@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import DatabaseApi from '../../../../Services/dbApi';
-
 import './Form.scss';
 
 class ContactForm extends Component {    
@@ -44,7 +43,7 @@ class ContactForm extends Component {
             <input type="email" id="email" name="email" value={email} onChange={(e) => this.setState({email:e.target.value})} placeholder="Email" /> 
             <label>Mensaje</label>
             <textarea id="subject" name="subject" value={message} onChange={(e) => this.setState({message:e.target.value})} placeholder="Escríbenos algo..."></textarea>
-            <input type="submit" value="Submit"/>
+            <input className="btn-form" type="submit" value="Submit"/>
             <p className="return-message">{returnMessage}</p>
           </form>
         </div>

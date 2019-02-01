@@ -6,7 +6,7 @@ class Footer extends Component {
   render (){
     return (
       <div className="footer">               
-        <p>&copy;RouteMood <img className="logo-foot" src={logo} />
+        <p>&copy;RouteMood <img className="logo-foot" src={logo} alt="logo"/>
         Silvia Barranco</p>
         
       </div>            

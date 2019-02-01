@@ -52,18 +52,19 @@ class CardFront extends Component {
     const { points, routeItems, flip}  = this.props;
       
     return(
-      <div className= 'front tile'>        
+      <div className= 'front tile'> 
+        <button className="button-map" onClick={flip}>
+          <FontAwesomeIcon  icon="chevron-circle-right" size="sm"/>
+        Ver Mapa</button>       
         <h1 className="title-route">{routeItems.name}</h1>
-        <p>{routeItems.description}</p>            
+        <p className="desc-route">{routeItems.description}</p>            
         <ul className="ul-points">{points && points.map(p => 
           <li className="points-list" key={p.name}>                
             <FontAwesomeIcon className="map-icon" icon='map-pin' size="xs" color='#974949'/>            
             {p.name}</li>
         )}
-        </ul>                                    
-        <button className="button-map" onClick={flip}>
-          <FontAwesomeIcon  icon="chevron-circle-right" size="sm"/>
-            Ver Mapa</button>
+        </ul>                                 
+
       </div>         
     );
   }
@@ -75,10 +76,10 @@ class CardBack extends React.Component {
     
     return(
       <div className='back tile'>
-        <MapApp points={points} /> 
         <button className="button-map" onClick={flip}>
           <FontAwesomeIcon icon="chevron-circle-right" size="sm"/>
-        Ver Ruta</button>      
+    Ver Ruta</button>
+        <MapApp points={points}/>        
       </div>
     );
   }

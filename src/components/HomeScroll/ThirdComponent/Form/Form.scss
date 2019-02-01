@@ -47,5 +47,11 @@ input[type=submit]:hover {
 }
 
 @media (max-width: 500px) {
-    
+    .btn-form {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    .contact-title{
+        margin: 10px;
+    }
 }

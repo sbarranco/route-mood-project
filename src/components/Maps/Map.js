@@ -36,7 +36,7 @@ class MapApp extends Component {
   }
 
   componentDidMount () {   
-    /*     navigator.geolocation.getCurrentPosition((actualPosition) => {
+    navigator.geolocation.getCurrentPosition((actualPosition) => {
       this.setState({
         locationUser: {
           lat: actualPosition.coords.latitude,
@@ -44,7 +44,7 @@ class MapApp extends Component {
         }
         
       });      
-    });  */
+    });  
   }
 
 
@@ -99,5 +99,3 @@ class MapApp extends Component {
 }
   
 export default withRouter(MapApp);
-
-

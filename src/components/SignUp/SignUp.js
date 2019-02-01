@@ -47,10 +47,12 @@ export default class SignUp extends Component {
     const result = await AuthApi.signUp(registerEmail, registerPassword);
 
     if(result === 'auth/weak-password') {
-      this.setState({registerError: 'Password is too weak!'});
+      this.setState({registerError: 'La contraseña debe tener al menos 6 carácteres'});
 
     } else if(result === 'auth/email-already-in-use'){
-      this.setState({registerError: 'User already exists'});
+      this.setState({registerError: 'El usuario ya existe'});
+    } else {
+      this.props.history.push('/home');
     }
   }
 

@@ -24,7 +24,7 @@ class FavRoutes extends Component {
 
     return (
       <div className="fav-routes">
-        <h2>My Favourite Routes</h2>
+        <h2>Mis rutas Favoritas</h2>
         {this.state.routesFav.length === 0 && <p className="no-favs">Todavía no tienes Favoritos</p>}
         {this.state.routesFav && this.state.routesFav.map((m => <RouteItem route={m} key={m} />))}      
         

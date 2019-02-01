@@ -100,7 +100,6 @@ export default class DatabaseApi {
       result.push(newDoc);
 
     });
-    console.log(result);
     return result;
   }
 
